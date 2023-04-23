@@ -90,19 +90,24 @@ t.test(s1,s2, conf.level = .95)
 
 ### Task 4
 
-(a)
+#### (a)
+
 The null hypothesis is that $\mu = 2$ and the alternative hypothesis is that $\mu \neq2$
 
-(b)
+#### (b)
+
 T: -1.02 and the P-value:0.322
 
-(c)
+#### (c)
+
 The reject region is |T| < 2.1262
 
-(d)
+#### (d)
+
 Since the pvalue is greater than alpha, we accept the null hypotehsis
 
-(e)
+#### (e)
+
 Both testing methods can can test null hypothesis $\mu=0$ agains the alternative hypothesis $\mu \neq 0$
 
 ### Task 5
@@ -129,8 +134,27 @@ We see the pvalue is > than alpha, thus we accept $H_0:\mu_1-\mu_2 = 0$
 
 ### Task 7
 
-```{r}
+#### a)
 
+```{r}
+turbine <- read.csv("GASTURBINE.csv")
+
+traditional <- turbine[turbine$ENGINE == "Traditional",]
+
+
+aeroder <- turbine[turbine$ENGINE == "Aeroderiv",]
+
+var.test(traditional$HEATRATE, aeroder$HEATRATE,conf.level = .95, var.equal=T)
+```
+
+from pval we dont have suff. evidence to reject null hypothesis
+
+#### b)
+
+```{r}
+advanced <-  turbine[turbine$ENGINE == "Advanced",]
+
+var.test(advanced$HEATRATE, aeroder$HEATRATE,conf.level = .95, var.equal=T)
 ```
 
 ### Task 8
@@ -140,8 +164,17 @@ We see the pvalue is > than alpha, thus we accept $H_0:\mu_1-\mu_2 = 0$
 
 ### Task 9
 
+The null and alternative hypotheses are: $H_0: \mu_d = 0$ and $H_1: \mu_d \neq 0$
+
+assume equal variances
+
 ```{r}
+data<- read.csv("THRUPUT.csv")
+
+t.test(data$HUMAN, data$AUTO, mu=0, paired = T)
 ```
+
+**pval is greater than alpha (.05) therefore we must reject null hypo.
 
 ### Task 10
 
