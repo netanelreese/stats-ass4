@@ -90,19 +90,24 @@ t.test(s1,s2, conf.level = .95)
 
 ### Task 4
 
-(a)
+#### (a)
+
 The null hypothesis is that $\mu = 2$ and the alternative hypothesis is that $\mu \neq2$
 
-(b)
+#### (b)
+
 T: -1.02 and the P-value:0.322
 
-(c)
+#### (c)
+
 The reject region is |T| < 2.1262
 
-(d)
+#### (d)
+
 Since the pvalue is greater than alpha, we accept the null hypotehsis
 
-(e)
+#### (e)
+
 Both testing methods can can test null hypothesis $\mu=0$ agains the alternative hypothesis $\mu \neq 0$
 
 ### Task 5
@@ -129,8 +134,27 @@ We see the pvalue is > than alpha, thus we accept $H_0:\mu_1-\mu_2 = 0$
 
 ### Task 7
 
-```{r}
+#### a)
 
+```{r}
+turbine <- read.csv("GASTURBINE.csv")
+
+traditional <- turbine[turbine$ENGINE == "Traditional",]
+
+
+aeroder <- turbine[turbine$ENGINE == "Aeroderiv",]
+
+var.test(traditional$HEATRATE, aeroder$HEATRATE,conf.level = .95, var.equal=T)
+```
+
+from pval we dont have suff. evidence to reject null hypothesis
+
+#### b)
+
+```{r}
+advanced <-  turbine[turbine$ENGINE == "Advanced",]
+
+var.test(advanced$HEATRATE, aeroder$HEATRATE,conf.level = .95, var.equal=T)
 ```
 
 ### Task 8
@@ -140,10 +164,58 @@ We see the pvalue is > than alpha, thus we accept $H_0:\mu_1-\mu_2 = 0$
 
 ### Task 9
 
+The null and alternative hypotheses are: $H_0: \mu_d = 0$ and $H_1: \mu_d \neq 0$
+
+assume equal variances
+
 ```{r}
+stdata<- read.csv("THRUPUT.csv")
+
+t.test(stdata$HUMAN, stdata$AUTO, mu=0, paired = T)
 ```
+
+**pval is greater than alpha (.05) therefore we must reject null hypo.
 
 ### Task 10
 
 ```{r}
+## sample function
+set.seed(35) # This will give everyone the same sample
+sam=round(rnorm(30,mean=20,sd=3),3)
+
+
+
+########### bootstrap function ##################
+
+myboot<-function(iter=10000,x,fun="mean",alpha=0.05,...){  #Notice where the ... is repeated in the code
+n=length(x)   #sample size
+
+y=sample(x,n*iter,replace=TRUE)
+rs.mat=matrix(y,nr=n,nc=iter,byrow=TRUE)
+xstat=apply(rs.mat,2,fun) # xstat is a vector and will have iter values in it 
+ci=quantile(xstat,c(alpha/2,1-alpha/2))# Nice way to form a confidence interval
+# A histogram follows
+# The object para will contain the parameters used to make the histogram
+para=hist(xstat,freq=FALSE,las=1,
+main=paste("Histogram of Bootstrap sample statistics","\n","alpha=",alpha," iter=",iter,sep=""),
+...,col = rainbow(5))
+
+#mat will be a matrix that contains the data, this is done so that I can use apply()
+mat=matrix(x,nr=length(x),nc=1,byrow=TRUE)
+
+#pte is the point estimate
+#This uses whatever fun is
+pte=apply(mat,2,fun)
+abline(v=pte,lwd=3,col="Black")# Vertical line
+segments(ci[1],0,ci[2],0,lwd=4)      #Make the segment for the ci
+text(ci[1],0,paste("(",round(ci[1],2),sep=""),col="Red",cex=3)
+text(ci[2],0,paste(round(ci[2],2),")",sep=""),col="Red",cex=3)
+
+# plot the point estimate 1/2 way up the density
+text(pte,max(para$density)/2,round(pte,2),cex=3)
+
+return(list(ci=ci,fun=fun,x=x, t=t))# Some output to use if necessary
+}
+
+myboot(x=sam)
 ```

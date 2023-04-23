@@ -169,9 +169,9 @@ The null and alternative hypotheses are: $H_0: \mu_d = 0$ and $H_1: \mu_d \neq 0
 assume equal variances
 
 ```{r}
-data<- read.csv("THRUPUT.csv")
+stdata<- read.csv("THRUPUT.csv")
 
-t.test(data$HUMAN, data$AUTO, mu=0, paired = T)
+t.test(stdata$HUMAN, stdata$AUTO, mu=0, paired = T)
 ```
 
 **pval is greater than alpha (.05) therefore we must reject null hypo.
