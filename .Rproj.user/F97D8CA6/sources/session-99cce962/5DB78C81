@@ -3,7 +3,7 @@
     "path": "C:/Users/reese/Desktop/fa23/stats/ass4/ass4.Rmd",
     "project_path": "ass4.Rmd",
     "type": "r_markdown",
-    "hash": "0",
+    "hash": "488543182",
     "contents": "",
     "dirty": true,
     "created": 1682288768813.0,
@@ -12,8 +12,8 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "176,70",
-        "scrollLine": "162",
+        "cursorPosition": "219,13",
+        "scrollLine": "203",
         "last_setup_crc32": "99cce962bb338d19"
     },
     "folds": "",
@@ -21,7 +21,7 @@
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1682289730300,
+    "last_content_update": 1682289857492,
     "read_only": false,
     "read_only_alternatives": []
 }
