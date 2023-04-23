@@ -1,0 +1,128 @@
+---
+title: "Ass 4"
+author: "Nathanael Reese"
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    toc: yes
+    toc_float: yes
+    theme: darkly
+    highlight: zenburn
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Completed 10/10
+
+### Task 1
+
+(a)
+```{r}
+library(LaF)
+# Function that samples the file
+sample1 <- function(file, n) {
+  lf <- laf_open(detect_dm_csv(file, sep = ",", header = TRUE, factor_fraction = -1))
+  return(read_lines(lf, sample(1:nrow(lf), n)))
+}
+```
+
+**sample**
+
+```{r}
+sample <- sample1("NZBIRDS.csv", 35)
+```
+
+#### (b)
+
+```{r}
+mp <- c(-1,1)
+mean(sample$Body.Mass) + mp*qt(1-.05,34)*sd(sample$Body.Mass)/sqrt(35)
+```
+
+#### (c)
+
+The mean of the sampled birds' body masses will fall in the itnerval with 95% confidence
+
+###(d)
+
+The interval is 95% confidence, which is why it is very likely to contain mu
+
+#### (e)
+
+```{r} mean(sample$Egg.Length) + mp*qt(1-.05,34)*sd(sample$Egg.Length)/sqrt(35)```
+The mean of the sampled birds' Egg Length will fall in the itnerval with 95% confidence
+
+The interval is 95% confidence, which is why it is very likely to contain mu
+
+#### (f)
+```{r}
+n1 = 38 # total extinct
+n2 = 78 # total not extinct
+
+p1hat = 21 / n1  
+q1hat = 1 - p1hat
+p2hat = 7 / n2
+q2hat = 1 - p2hat
+
+mp = c(-1,1)
+ci <- (p1hat - p2hat) + mp * qnorm(1-.05/2,0,1)*sqrt((p1hat*q1hat/n1) + (p2hat*q2hat/n2))
+ci
+```
+
+
+### Task 2
+
+```{r}
+
+```
+
+### Task 3
+
+
+```{r}
+
+```
+
+### Task 4
+
+```{r}
+
+```
+
+### Task 5
+
+
+
+```{r}
+
+```
+
+
+### Task 6
+
+```{r}
+```
+
+
+### Task 7
+
+```{r}
+
+```
+
+### Task 8
+
+```{r}
+```
+
+### Task 9
+
+```{r}
+```
+
+### Task 10
+
+```{r}
+```
