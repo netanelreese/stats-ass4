@@ -75,7 +75,10 @@ ci
 ### Task 2
 
 ```{r}
+s1 <- rnorm(100, mean = 1312, sd = 422)
+s2<- rnorm(47, mean = 1352, sd = 271)
 
+t.test(s1,s2, conf.level = .95)
 ```
 
 ### Task 3
@@ -87,9 +90,20 @@ ci
 
 ### Task 4
 
-```{r}
+(a)
+The null hypothesis is that $\mu = 2$ and the alternative hypothesis is that $\mu \neq2$
 
-```
+(b)
+T: -1.02 and the P-value:0.322
+
+(c)
+The reject region is |T| < 2.1262
+
+(d)
+Since the pvalue is greater than alpha, we accept the null hypotehsis
+
+(e)
+Both testing methods can can test null hypothesis $\mu=0$ agains the alternative hypothesis $\mu \neq 0$
 
 ### Task 5
 
@@ -103,7 +117,14 @@ ci
 ### Task 6
 
 ```{r}
+data <- read.csv("ORCHARD.csv")
+foggy <- data[data$CONDITION == "FOG",]
+cloudyClear <- data[data$CONDITION != "FOG",]
+
+t.test(data$CONDITION == "FOG",data$CONDITION != "FOG", mu= 0, conf.level = .95)
 ```
+
+We see the pvalue is > than alpha, thus we accept $H_0:\mu_1-\mu_2 = 0$
 
 
 ### Task 7

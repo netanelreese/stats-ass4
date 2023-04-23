@@ -117,7 +117,14 @@ Both testing methods can can test null hypothesis $\mu=0$ agains the alternative
 ### Task 6
 
 ```{r}
+data <- read.csv("ORCHARD.csv")
+foggy <- data[data$CONDITION == "FOG",]
+cloudyClear <- data[data$CONDITION != "FOG",]
+
+t.test(data$CONDITION == "FOG",data$CONDITION != "FOG", mu= 0, conf.level = .95)
 ```
+
+We see the pvalue is > than alpha, thus we accept $H_0:\mu_1-\mu_2 = 0$
 
 
 ### Task 7

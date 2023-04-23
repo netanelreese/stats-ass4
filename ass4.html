@@ -1601,7 +1601,7 @@ border-radius: 0px;
 <h4>(b)</h4>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>mp <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(sample<span class="sc">$</span>Body.Mass) <span class="sc">+</span> mp<span class="sc">*</span><span class="fu">qt</span>(<span class="dv">1</span><span class="fl">-.05</span>,<span class="dv">34</span>)<span class="sc">*</span><span class="fu">sd</span>(sample<span class="sc">$</span>Body.Mass)<span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">35</span>)</span></code></pre></div>
-<pre><code>## [1]   899.5511 23324.6203</code></pre>
+<pre><code>## [1] -1192.994 19867.394</code></pre>
 </div>
 <div id="c" class="section level4">
 <h4>(c)</h4>
@@ -1637,18 +1637,60 @@ contain mu</p>
 </div>
 <div id="task-2" class="section level3">
 <h3>Task 2</h3>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>s1 <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">mean =</span> <span class="dv">1312</span>, <span class="at">sd =</span> <span class="dv">422</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>s2<span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">47</span>, <span class="at">mean =</span> <span class="dv">1352</span>, <span class="at">sd =</span> <span class="dv">271</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(s1,s2, <span class="at">conf.level =</span> .<span class="dv">95</span>)</span></code></pre></div>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  s1 and s2
+## t = -1.4026, df = 128.99, p-value = 0.1631
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -186.87586   31.83368
+## sample estimates:
+## mean of x mean of y 
+##  1282.020  1359.541</code></pre>
 </div>
 <div id="task-3" class="section level3">
 <h3>Task 3</h3>
 </div>
 <div id="task-4" class="section level3">
 <h3>Task 4</h3>
+<ol style="list-style-type: lower-alpha">
+<li><p>The null hypothesis is that <span class="math inline">\(\mu =
+2\)</span> and the alternative hypothesis is that <span class="math inline">\(\mu \neq2\)</span></p></li>
+<li><p>T: -1.02 and the P-value:0.322</p></li>
+<li><p>The reject region is |T| &lt; 2.1262</p></li>
+<li><p>Since the pvalue is greater than alpha, we accept the null
+hypotehsis</p></li>
+<li><p>Both testing methods can can test null hypothesis <span class="math inline">\(\mu=0\)</span> agains the alternative hypothesis
+<span class="math inline">\(\mu \neq 0\)</span></p></li>
+</ol>
 </div>
 <div id="task-5" class="section level3">
 <h3>Task 5</h3>
 </div>
 <div id="task-6" class="section level3">
 <h3>Task 6</h3>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;ORCHARD.csv&quot;</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>foggy <span class="ot">&lt;-</span> data[data<span class="sc">$</span>CONDITION <span class="sc">==</span> <span class="st">&quot;FOG&quot;</span>,]</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>cloudyClear <span class="ot">&lt;-</span> data[data<span class="sc">$</span>CONDITION <span class="sc">!=</span> <span class="st">&quot;FOG&quot;</span>,]</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(data<span class="sc">$</span>CONDITION <span class="sc">==</span> <span class="st">&quot;FOG&quot;</span>,data<span class="sc">$</span>CONDITION <span class="sc">!=</span> <span class="st">&quot;FOG&quot;</span>, <span class="at">mu=</span> <span class="dv">0</span>, <span class="at">conf.level =</span> .<span class="dv">95</span>)</span></code></pre></div>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  data$CONDITION == &quot;FOG&quot; and data$CONDITION != &quot;FOG&quot;
+## t = 2.0412, df = 24, p-value = 0.05237
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -0.004269104  0.773499874
+## sample estimates:
+## mean of x mean of y 
+## 0.6923077 0.3076923</code></pre>
+<p>We see the pvalue is &gt; than alpha, thus we accept <span class="math inline">\(H_0:\mu_1-\mu_2 = 0\)</span></p>
 </div>
 <div id="task-7" class="section level3">
 <h3>Task 7</h3>
