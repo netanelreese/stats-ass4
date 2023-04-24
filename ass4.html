@@ -1601,7 +1601,7 @@ border-radius: 0px;
 <h4>(b)</h4>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>mp <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(sample<span class="sc">$</span>Body.Mass) <span class="sc">+</span> mp<span class="sc">*</span><span class="fu">qt</span>(<span class="dv">1</span><span class="fl">-.05</span>,<span class="dv">34</span>)<span class="sc">*</span><span class="fu">sd</span>(sample<span class="sc">$</span>Body.Mass)<span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">35</span>)</span></code></pre></div>
-<pre><code>## [1]  2541.008 20219.335</code></pre>
+<pre><code>## [1]  6275.105 36066.495</code></pre>
 </div>
 <div id="c" class="section level4">
 <h4>(c)</h4>
@@ -1645,25 +1645,58 @@ contain mu</p>
 ##  Welch Two Sample t-test
 ## 
 ## data:  s1 and s2
-## t = -0.73285, df = 134, p-value = 0.4649
+## t = 1.0054, df = 126.3, p-value = 0.3166
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  -168.67250   77.46885
+##  -57.38744 175.91696
 ## sample estimates:
 ## mean of x mean of y 
-##  1247.613  1293.215</code></pre>
+##  1409.409  1350.145</code></pre>
 </div>
 <div id="task-3" class="section level3">
 <h3>Task 3</h3>
+<div id="a" class="section level4">
+<h4>a)</h4>
+<p>Given <span class="math inline">\(Y\)</span> ~ <span class="math inline">\(N(0, \sigma^2)\)</span></p>
+<p>The standard Normal Variate</p>
+<p><span class="math inline">\(Z = \frac{Y-0}{\sigma}\)</span> ~ <span class="math inline">\(N(0,1)\)</span></p>
+<p>-&gt; <span class="math inline">\(Z^2\)</span> ~ <span class="math inline">\(\chi^2_{(1)df}\)</span></p>
+<p>-&gt; <span class="math inline">\((\frac{Y}{\sigma})^2\)</span> ~
+<span class="math inline">\(\chi^2_{(1)df}\)</span></p>
+<p>-&gt; <span class="math inline">\(\frac{Y^2}{\sigma^2}\)</span> ~
+<span class="math inline">\(\chi^2_{(1)df}\)</span></p>
+<p>Since square of standard Normal variate follows chisqare distribution
+with 1 df</p>
+</div>
+<div id="b-1" class="section level4">
+<h4>b)</h4>
+<p><strong>95% confidence interval</strong> <em>Test Stat</em> <span class="math inline">\(\chi^2 = \frac{Y^2}{\sigma^2}\)</span> ~ <span class="math inline">\(\chi^2_{(1)df}\)</span></p>
+<p>if two tail test</p>
+<p><span class="math inline">\(P(\chi^2_{(\alpha/2, n-1df)} &lt;
+\frac{Y^2}{\sigma^2} &lt; \chi^2_{(1-\alpha, n-1df)}) =
+(1-\alpha)100\)</span>%</p>
+<p><span class="math inline">\(P(\frac{1}{\chi^2_{(\alpha/2, n-1df)}}
+&lt; \frac{\sigma^2}{Y^2} &lt; \frac{Y^2}{\chi^2_{(1-\alpha, n-1df)}}) =
+(1-\alpha)100\)</span>%</p>
+<p><span class="math inline">\(P(\frac{Y^2}{\chi^2_{(\alpha/2, n-1df)}}
+&lt; \sigma^2 &lt; \frac{1}{\chi^2_{(1-\alpha, n-1df)}}) =
+(1-\alpha)100\)</span>%</p>
+<p>Lower Limit of <span class="math inline">\(\sigma^2\)</span> is L =
+<span class="math inline">\(\frac{Y^2}{\chi^2_{(\alpha/2,
+n-1df)}}\)</span></p>
+<p>Upper Limit of <span class="math inline">\(\sigma^2\)</span> is U =
+<span class="math inline">\(\frac{1}{\chi^2_{(1-\alpha,
+n-1df)}}\)</span></p>
+</div>
 </div>
 <div id="task-4" class="section level3">
 <h3>Task 4</h3>
-<div id="a" class="section level4">
+<div id="a-1" class="section level4">
 <h4>(a)</h4>
 <p>The null hypothesis is that <span class="math inline">\(\mu =
 2\)</span> and the alternative hypothesis is that <span class="math inline">\(\mu \neq2\)</span></p>
 </div>
-<div id="b-1" class="section level4">
+<div id="b-2" class="section level4">
 <h4>(b)</h4>
 <p>T: -1.02 and the P-value:0.322</p>
 </div>
@@ -1684,6 +1717,27 @@ hypotehsis</p>
 </div>
 <div id="task-5" class="section level3">
 <h3>Task 5</h3>
+<div id="a-2" class="section level4">
+<h4>a)</h4>
+<p>Sample size is n=25</p>
+<p>Pop. Mean is <span class="math inline">\(\mu\)</span> = 15</p>
+<p>Sample mean is <span class="math inline">\(\bar{x}\)</span> sample sd
+is s = 12.9637</p>
+<p>lets test <span class="math inline">\(H_0\)</span>: <span class="math inline">\(\mu = 15\)</span> vs <span class="math inline">\(H_1\)</span>: <span class="math inline">\(\mu \neq
+15\)</span></p>
+<p>and use <span class="math inline">\({\bar{x}-\mu}/{S}/{\sqrt{n}}\)</span> =
+-0.1867</p>
+<p><span class="math inline">\(\alpha = 0.10\)</span> and P-val is
+0.854, so result is not significant so we can say that the sample is
+representative of all Wisconsin lakes for the DOC</p>
+</div>
+<div id="b-3" class="section level4">
+<h4>b)</h4>
+<p>if mean is 14 test does not indicate any significant difference</p>
+</div>
+<div id="b-4" class="section level4">
+<h4>b)</h4>
+</div>
 </div>
 <div id="task-6" class="section level3">
 <h3>Task 6</h3>
@@ -1707,7 +1761,7 @@ hypotehsis</p>
 </div>
 <div id="task-7" class="section level3">
 <h3>Task 7</h3>
-<div id="a-1" class="section level4">
+<div id="a-3" class="section level4">
 <h4>a)</h4>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>turbine <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;GASTURBINE.csv&quot;</span>)</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -1730,7 +1784,7 @@ hypotehsis</p>
 ##          0.2327207</code></pre>
 <p>from pval we dont have suff. evidence to reject null hypothesis</p>
 </div>
-<div id="b-2" class="section level4">
+<div id="b-5" class="section level4">
 <h4>b)</h4>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>advanced <span class="ot">&lt;-</span>  turbine[turbine<span class="sc">$</span>ENGINE <span class="sc">==</span> <span class="st">&quot;Advanced&quot;</span>,]</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -1750,6 +1804,44 @@ hypotehsis</p>
 </div>
 <div id="task-8" class="section level3">
 <h3>Task 8</h3>
+<p>dry steppe - n = 5, (3, 3, 52, 7, 5)</p>
+<p>gobi - n = 6, (49, 5, 4, 4, 5, 4)</p>
+<p>for <span class="math inline">\(s^2_1 = 454\)</span></p>
+<p>for <span class="math inline">\(s^2_2 = 331.76667\)</span></p>
+<div id="a-4" class="section level4">
+<h4>a)</h4>
+<p><span class="math display">\[
+H_0 = \frac{\sigma^2_1}{\sigma^2_2} = 1\\
+H_a = \frac{\sigma^2_1}{\sigma^2_2} \neq 1
+\]</span></p>
+</div>
+<div id="b-6" class="section level4">
+<h4>b)</h4>
+<p>the ratio f = s21/s22 is a value of the F-distribution with v1 = 5 −
+1 = 4 and v2 = 6− 1 = 5degrees of freedom. Therefore, the critical
+regions</p>
+<p>f = 454/331.76667 = 1.3684</p>
+</div>
+<div id="c-2" class="section level4">
+<h4>c)</h4>
+<p>rejection region is f &gt; <span class="math inline">\(f_{0.025}\)</span>(4,5) or f &lt; <span class="math inline">\(f_{0.975}\)</span>(4,5)</p>
+<p>f &gt; 7.39 or f &lt; 0.11</p>
+</div>
+<div id="d-1" class="section level4">
+<h4>d)</h4>
+<p>p-value = 0.64</p>
+</div>
+<div id="e-2" class="section level4">
+<h4>e)</h4>
+<p>since 1.3684 does not lie in critical region ,we can not reject the
+hypothesis.</p>
+<p><strong>we conclude that there is insufficient evidence that the
+variances differ.</strong></p>
+</div>
+<div id="f-1" class="section level4">
+<h4>f)</h4>
+<p>independent random samples from normal population.</p>
+</div>
 </div>
 <div id="task-9" class="section level3">
 <h3>Task 9</h3>
@@ -1829,7 +1921,7 @@ hypo.</p>
 ## $t
 ## function (x) 
 ## UseMethod(&quot;t&quot;)
-## &lt;bytecode: 0x00000256f5c5b810&gt;
+## &lt;bytecode: 0x000001b122132a10&gt;
 ## &lt;environment: namespace:base&gt;</code></pre>
 </div>
 </div>

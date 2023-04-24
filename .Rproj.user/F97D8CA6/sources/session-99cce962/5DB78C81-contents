@@ -83,10 +83,41 @@ t.test(s1,s2, conf.level = .95)
 
 ### Task 3
 
+#### a)
 
-```{r}
 
-```
+Given $Y$ ~ $N(0, \sigma^2)$
+
+The standard Normal Variate
+
+
+$Z = \frac{Y-0}{\sigma}$ ~ $N(0,1)$
+
+-> $Z^2$ ~ $\chi^2_{(1)df}$
+
+-> $(\frac{Y}{\sigma})^2$ ~ $\chi^2_{(1)df}$
+
+-> $\frac{Y^2}{\sigma^2}$ ~ $\chi^2_{(1)df}$
+
+Since square of standard Normal variate follows chisqare distribution with 1 df
+
+#### b)
+
+**95% confidence interval**
+*Test Stat*
+$\chi^2 = \frac{Y^2}{\sigma^2}$ ~ $\chi^2_{(1)df}$
+
+if two tail test
+
+$P(\chi^2_{(\alpha/2, n-1df)} < \frac{Y^2}{\sigma^2} < \chi^2_{(1-\alpha, n-1df)}) = (1-\alpha)100$%
+
+$P(\frac{1}{\chi^2_{(\alpha/2, n-1df)}} < \frac{\sigma^2}{Y^2} < \frac{Y^2}{\chi^2_{(1-\alpha, n-1df)}}) = (1-\alpha)100$%
+
+$P(\frac{Y^2}{\chi^2_{(\alpha/2, n-1df)}} < \sigma^2 < \frac{1}{\chi^2_{(1-\alpha, n-1df)}}) = (1-\alpha)100$%
+
+Lower Limit of $\sigma^2$ is L = $\frac{Y^2}{\chi^2_{(\alpha/2, n-1df)}}$
+
+Upper Limit of $\sigma^2$ is U = $\frac{1}{\chi^2_{(1-\alpha, n-1df)}}$
 
 ### Task 4
 
@@ -112,12 +143,25 @@ Both testing methods can can test null hypothesis $\mu=0$ agains the alternative
 
 ### Task 5
 
+#### a)
 
+Sample size is n=25
 
-```{r}
+Pop. Mean is $\mu$ = 15
 
-```
+Sample mean is $\bar{x}$ sample sd is s = 12.9637
 
+lets test $H_0$: $\mu = 15$ vs $H_1$: $\mu \neq 15$
+
+and use ${\bar{x}-\mu}/{S}/{\sqrt{n}}$ = -0.1867
+
+$\alpha = 0.10$ and P-val is 0.854, so result is not significant so we can say that the sample is representative of all Wisconsin lakes for the DOC
+
+#### b)
+
+if mean is 14 test does not indicate any significant difference
+
+#### b)
 
 ### Task 6
 
@@ -159,8 +203,47 @@ var.test(advanced$HEATRATE, aeroder$HEATRATE,conf.level = .95, var.equal=T)
 
 ### Task 8
 
-```{r}
-```
+dry steppe - n = 5, (3, 3, 52, 7, 5)
+
+gobi - n = 6, (49, 5, 4, 4, 5, 4)
+
+for $s^2_1 = 454$
+
+for $s^2_2 = 331.76667$
+
+#### a)
+
+$$
+H_0 = \frac{\sigma^2_1}{\sigma^2_2} = 1\\
+H_a = \frac{\sigma^2_1}{\sigma^2_2} \neq 1
+$$
+
+#### b)
+
+the ratio f = s21/s22 is a value of the F-distribution with
+v1 = 5 − 1 = 4 and v2 = 6− 1 = 5degrees of freedom. Therefore, the critical regions
+
+f = 454/331.76667 = 1.3684
+
+#### c)
+
+rejection region is f > $f_{0.025}$(4,5) or f < $f_{0.975}$(4,5)
+
+f > 7.39 or f < 0.11
+
+#### d)
+
+p-value = 0.64
+
+#### e)
+
+since 1.3684 does not lie in critical region ,we can not reject the hypothesis.
+
+**we conclude that there is insufficient evidence that the variances differ.**
+
+#### f)
+
+independent random samples from normal population.
 
 ### Task 9
 
